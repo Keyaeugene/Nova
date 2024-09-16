@@ -28,6 +28,8 @@ class _SignUpPageState extends State<SignUpPage> {
         );
         return;
       }
+
+      // Sign up the user with email and password
       final response = await supabase.auth.signUp(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
@@ -37,8 +39,21 @@ class _SignUpPageState extends State<SignUpPage> {
         },
       );
 
-      if (response.user != null) {
+      final user = response.user;
+      if (user != null) {
+        // Insert additional data into the 'users' table
+        await supabase.from('users').insert({
+          'id': user.id,
+          'full_name': usernameController.text.trim(),
+          'email': emailController.text.trim(),
+          'provider': 'email',
+          'password': passwordController.text
+              .trim(), // (Optional: Store password securely)
+          'created_at': DateTime.now().toIso8601String(),
+        });
+
         if (!mounted) return;
+        // Navigate to login page after successful sign-up
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const LoginPage()),

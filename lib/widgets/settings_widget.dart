@@ -6,14 +6,12 @@ AppBar buildAppBar() {
   return AppBar(
     backgroundColor: Colors.grey[300],
     centerTitle: true,
-    title: Container(
-      child: const Text(
-        "Settings",
-        style: TextStyle(
-          color: Colors.black87,
-          fontWeight: FontWeight.bold,
-          fontSize: 24,
-        ),
+    title: const Text(
+      "Settings",
+      style: TextStyle(
+        color: Colors.black87,
+        fontWeight: FontWeight.bold,
+        fontSize: 24,
       ),
     ),
   );
@@ -50,13 +48,31 @@ Widget settingsButton(BuildContext context) {
         },
       );
     },
-    child: Container(
-      height: 100,
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-        fit: BoxFit.fitHeight,
-        image: AssetImage("lib/images/logout.png"),
-      )),
+    child: Padding(
+      padding: const EdgeInsets.only(left: 30.0),
+      child: Row(
+        children: [
+          const Text(
+            'Logout',
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            width: 50,
+            child: Container(
+              height: 30,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fitHeight,
+                  image: AssetImage("lib/images/logout.png"),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }

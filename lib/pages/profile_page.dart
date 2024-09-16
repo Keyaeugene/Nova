@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nova/main.dart';
 import 'package:nova/widgets/profile_widget.dart';
+import 'package:provider/provider.dart';
+import '../provider/user_provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -11,14 +12,17 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   @override
-  Widget build(BuildContext context) {
-    final user = supabase.auth.currentUser;
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      userProvider.fetchUserData();
+    });
+  }
 
-    final fullName =
-        user?.userMetadata?['full_name'] ?? user?.userMetadata?['name'] ?? '';
-    final profileImageUrl = user?.userMetadata?['avatar_url'] ??
-        user?.userMetadata?['picture'] ??
-        '';
+  @override
+  Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
 
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -31,15 +35,24 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               const SizedBox(height: 30),
               ClipOval(
-                child: profileImageUrl.isNotEmpty
+                child: userProvider.avatarUrl.isNotEmpty
                     ? Image.network(
-                        profileImageUrl,
+                        userProvider
+                            .avatarUrl, // Use avatarUrl from UserProvider
                         width: 100,
                         height: 100,
                         fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset(
+                            'lib/images/head.png', // Fallback image
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          );
+                        },
                       )
                     : Image.asset(
-                        'lib/images/head.png',
+                        'lib/images/head.png', // Fallback image
                         width: 100,
                         height: 100,
                         fit: BoxFit.cover,
@@ -47,12 +60,14 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const SizedBox(height: 16),
               Text(
-                fullName,
+                userProvider.fullName.isNotEmpty
+                    ? userProvider.fullName
+                    : 'No name available',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               Padding(
-                padding: const EdgeInsets.only(left: 25),
+                padding: const EdgeInsets.only(left: 25.0),
                 child: buildListView(context),
               ),
             ],

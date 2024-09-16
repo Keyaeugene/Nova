@@ -3,7 +3,7 @@ import 'package:nova/components/my_button.dart';
 import 'package:nova/components/my_textfield.dart';
 import 'package:nova/components/square_tile.dart';
 import 'package:nova/main.dart';
-import 'package:nova/pages/home_page.dart';
+import 'package:nova/pages/application_page.dart';
 import 'package:nova/pages/signup_page.dart';
 import 'package:nova/services/auth_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -29,8 +29,8 @@ class _LoginPageState extends State<LoginPage> {
     supabase.auth.onAuthStateChange.listen((data) {
       final event = data.event;
       if (event == AuthChangeEvent.signedIn) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const HomePage()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const ApplicationPage()));
       }
     });
   }
@@ -43,8 +43,8 @@ class _LoginPageState extends State<LoginPage> {
       );
       if (!mounted) return;
 
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomePage()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const ApplicationPage()));
     } on AuthException catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(

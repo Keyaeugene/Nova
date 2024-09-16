@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../widgets/homepage_widgdet.dart';
+import '../widgets/application_widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class ApplicationPage extends StatefulWidget {
+  const ApplicationPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ApplicationPage> createState() => _AppicationPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AppicationPageState extends State<ApplicationPage> {
   int _index = 0;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,6 @@ class _HomePageState extends State<HomePage> {
               setState(() {
                 _index = value;
               });
-              print(_index);
             },
             elevation: 0,
             type: BottomNavigationBarType.fixed,

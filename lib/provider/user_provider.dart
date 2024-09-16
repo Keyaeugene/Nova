@@ -10,27 +10,29 @@ class UserProvider with ChangeNotifier {
   Future<void> fetchUserData() async {
     final user = Supabase.instance.client.auth.currentUser;
     if (user != null) {
-      // Check if user is signed in via Google
-      if (user.appMetadata['provider'] == 'google') {
-        fullName = user.userMetadata?['full_name'] ?? 'No full name';
-        email = user.email ?? 'No email';
-        avatarUrl = user.userMetadata?['avatar_url'] ?? '';
-        provider = 'google';
-      } else {
-        // Handle data fetching from your users table if not Google sign-in
-        final response = await Supabase.instance.client
-            .from('users')
-            .select()
-            .eq('id', user.id)
-            .single();
+      try {
+        // Check if user is signed in via Google
+        if (user.appMetadata['provider'] == 'google') {
+          fullName = user.userMetadata?['full_name'] ?? 'No full name';
+          email = user.email ?? 'No email';
+          avatarUrl = user.userMetadata?['avatar_url'] ?? '';
+          provider = 'google';
+        } else {
+          // Handle data fetching from your users table if not Google sign-in
+          final response = await Supabase.instance.client
+              .from('users')
+              .select()
+              .eq('id', user.id)
+              .single();
 
-        fullName = response['full_name'] ?? 'No full name';
-        email = response['email'] ?? 'No email';
-        avatarUrl = response['avatar_url'] ?? '';
-        provider = response['provider'] ?? 'email';
-      }
-      notifyListeners();
-    }
+          fullName = response['full_name'] ?? 'No full name';
+          email = response['email'] ?? 'No email';
+          avatarUrl = response['avatar_url'] ?? '';
+          provider = response['provider'] ?? 'email';
+        }
+        notifyListeners();
+      } catch (error) {}
+    } else {}
   }
 
   void setFullName(String name) {

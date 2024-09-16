@@ -1,5 +1,4 @@
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nova/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService {
@@ -13,21 +12,61 @@ class AuthService {
       clientId: iosClientId,
       serverClientId: webClientId,
     );
-    final googleUser = await googleSignIn.signIn();
-    final googleAuth = await googleUser!.authentication;
-    final accessToken = googleAuth.accessToken;
-    final idToken = googleAuth.idToken;
 
-    if (accessToken == null) {
-      throw 'No Access Token found.';
+    try {
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        throw 'Google sign-in canceled or failed.';
+      }
+
+      final googleAuth = await googleUser.authentication;
+      final accessToken = googleAuth.accessToken;
+      final idToken = googleAuth.idToken;
+
+      if (accessToken == null) {
+        throw 'No Access Token found.';
+      }
+      if (idToken == null) {
+        throw 'No ID Token found.';
+      }
+
+      // Sign in with Supabase using Google credentials
+      final authResponse =
+          await Supabase.instance.client.auth.signInWithIdToken(
+        provider: OAuthProvider.google,
+        idToken: idToken,
+        accessToken: accessToken,
+      );
+
+      // Fetch the signed-in user's info
+      final user = authResponse.session?.user;
+
+      if (user != null) {
+        final googleUserEmail = user.email;
+        final googleUserName =
+            user.userMetadata?['full_name'] ?? googleUserEmail;
+        final googleAvatarUrl =
+            user.userMetadata?['avatar_url'] ?? 'default_avatar_url_here';
+
+        // Check if the user ID and email exist before upserting into the database
+        if (googleUserEmail != null) {
+          // Use upsert to insert or update user information in the 'users' table
+          await Supabase.instance.client.from('users').upsert({
+            'id': user.id,
+            'full_name': googleUserName,
+            'email': googleUserEmail,
+            'avatar_url': googleAvatarUrl,
+            'google': googleUserEmail,
+            'created_at': DateTime.now().toIso8601String(),
+          });
+        } else {}
+      } else {
+        throw 'Failed to retrieve user after Google sign-in.';
+      }
+
+      return authResponse;
+    } catch (e) {
+      rethrow;
     }
-    if (idToken == null) {
-      throw 'No ID Token found.';
-    }
-    return supabase.auth.signInWithIdToken(
-      provider: OAuthProvider.google,
-      idToken: idToken,
-      accessToken: accessToken,
-    );
   }
 }
