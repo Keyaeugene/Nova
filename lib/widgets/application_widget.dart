@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nova/pages/home_page.dart';
 import 'package:nova/pages/profile_page.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [
-    const Center(child: Text("Home")),
+    const HomePage(),
     const Center(child: Text("Favorite")),
     const Center(child: Text("search")),
     const ProfilePage(),
