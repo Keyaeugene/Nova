@@ -74,6 +74,11 @@ flutter:
     - lib/images/settings.png
     - lib/images/credit-card.png
     - lib/images/logout.png
+    - lib/images/mov1.png
+    - lib/images/mov2.png
+    - lib/images/mov3.png
+    - lib/images/mov4.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
