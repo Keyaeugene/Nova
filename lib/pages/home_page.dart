@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nova/components/search_box.dart';
 import 'package:nova/widgets/homepage_widget.dart';
+import 'package:nova/widgets/newmovies_widget.dart';
 import 'package:nova/widgets/upcoming_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,6 +25,8 @@ class _HomePageState extends State<HomePage> {
             SearchBox(),
             SizedBox(height: 30),
             UpcomingWidget(),
+            SizedBox(height: 30),
+            NewmoviesWidget(),
           ],
         ),
       )),
