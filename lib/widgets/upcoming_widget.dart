@@ -48,7 +48,7 @@ class _UpcomingWidgetState extends State<UpcomingWidget> {
                     borderRadius: BorderRadius.circular(15),
                     child: Image.asset(
                       "lib/images/mov$i.png",
-                      height: 180,
+                      height: 250,
                       width: 300,
                       fit: BoxFit.cover,
                     ),

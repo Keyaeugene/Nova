@@ -88,6 +88,7 @@ flutter:
     - lib/images/8.png
     - lib/images/9.png
     - lib/images/10.png
+    - lib/images/category.png
 
 
   #   - images/a_dot_ham.jpeg
