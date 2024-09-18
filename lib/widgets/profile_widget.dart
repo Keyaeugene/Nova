@@ -13,10 +13,10 @@ AppBar buildAppBar() {
           height: 20,
           child: Image.asset("lib/images/menu.png"),
         ),
-        Text(
+        const Text(
           "Profile",
           style: TextStyle(
-            color: Colors.grey[700],
+            color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 24,
           ),
@@ -76,8 +76,8 @@ Widget buildListView(BuildContext context) {
                 const SizedBox(width: 15),
                 Text(
                   imagesInfo.keys.elementAt(index),
-                  style: TextStyle(
-                    color: Colors.grey[700],
+                  style: const TextStyle(
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
                   ),

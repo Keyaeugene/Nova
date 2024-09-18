@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nova/pages/movie_page.dart';
 
 class NewmoviesWidget extends StatefulWidget {
   const NewmoviesWidget({super.key});
@@ -19,10 +20,10 @@ class _NewmoviesWidgetState extends State<NewmoviesWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'New Movies',
                 style: TextStyle(
-                  color: Colors.grey[700],
+                  color: Colors.black,
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
                 ),
@@ -45,11 +46,18 @@ class _NewmoviesWidgetState extends State<NewmoviesWidget> {
             children: [
               for (int i = 1; i < 11; i++)
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MoviePage(),
+                      ),
+                    );
+                  },
                   child: Container(
                       width: 190,
                       height: 300,
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(16),
@@ -65,7 +73,7 @@ class _NewmoviesWidgetState extends State<NewmoviesWidget> {
                       child: Column(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
                             ),
@@ -77,7 +85,7 @@ class _NewmoviesWidgetState extends State<NewmoviesWidget> {
                             ),
                           ),
                           Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 vertical: 10,
                                 horizontal: 5,
                               ),
@@ -101,7 +109,7 @@ class _NewmoviesWidgetState extends State<NewmoviesWidget> {
                                     ),
                                     const SizedBox(height: 5),
                                     Row(children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.star,
                                         color: Colors.amber,
                                       ),

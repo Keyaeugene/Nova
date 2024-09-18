@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nova/pages/favorite_page.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -25,7 +26,12 @@ class _CategoryPageState extends State<CategoryPage> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FavoritePage(),
+                          ),
+                        );
                       },
                       child: const Icon(
                         Icons.arrow_back,
@@ -63,7 +69,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(width: 10),
                             Text(
                               "Category",
                               style: TextStyle(

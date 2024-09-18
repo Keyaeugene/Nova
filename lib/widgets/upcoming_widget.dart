@@ -17,10 +17,10 @@ class _UpcomingWidgetState extends State<UpcomingWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Upcoming Movies",
                 style: TextStyle(
-                  color: Colors.grey[700],
+                  color: Colors.black,
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
                 ),
