@@ -31,7 +31,7 @@ class _NewmoviesWidgetState extends State<NewmoviesWidget> {
               Text(
                 'See All',
                 style: TextStyle(
-                  color: Colors.grey[900],
+                  color: Colors.grey[700],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),

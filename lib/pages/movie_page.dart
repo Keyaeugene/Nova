@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nova/components/moviepage_buttons.dart';
 import 'package:nova/pages/application_page.dart';
+import 'package:nova/widgets/recommend_widget.dart';
 
 class MoviePage extends StatefulWidget {
   const MoviePage({super.key});
@@ -134,10 +135,13 @@ class _MoviePageState extends State<MoviePage> {
                             color: Colors.grey[900],
                             fontSize: 16,
                           ),
+                          textAlign: TextAlign.justify,
                         )
                       ],
                     ),
                   ),
+                  const SizedBox(height: 10),
+                  RecommendWidget(),
                 ],
               ),
             ),

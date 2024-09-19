@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class UpcomingWidget extends StatefulWidget {
-  const UpcomingWidget({super.key});
+class RecommendWidget extends StatefulWidget {
+  const RecommendWidget({super.key});
 
   @override
-  State<UpcomingWidget> createState() => _UpcomingWidgetState();
+  State<RecommendWidget> createState() => _RecommendWidgetState();
 }
 
-class _UpcomingWidgetState extends State<UpcomingWidget> {
+class _RecommendWidgetState extends State<RecommendWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,10 +17,10 @@ class _UpcomingWidgetState extends State<UpcomingWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "Upcoming Movies",
+              Text(
+                "Recommmended",
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.grey[900],
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
                 ),
@@ -36,27 +36,26 @@ class _UpcomingWidgetState extends State<UpcomingWidget> {
             ],
           ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(
+          height: 15,
+        ),
         SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              for (int i = 1; i < 5; i++)
+            scrollDirection: Axis.horizontal,
+            child: Row(children: [
+              for (int i = 1; i < 11; i++)
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
-                      "lib/images/mov$i.png",
-                      height: 250,
-                      width: 300,
+                      "lib/images/$i.png",
+                      height: 180,
+                      width: 150,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-            ],
-          ),
-        )
+            ])),
       ],
     );
   }
