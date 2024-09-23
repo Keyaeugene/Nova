@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nova/components/moviepage_buttons.dart';
-import 'package:nova/pages/application_page.dart';
 import 'package:nova/widgets/recommend_widget.dart';
 
 class MoviePage extends StatefulWidget {
-  const MoviePage({super.key});
+  final Map<String, dynamic> movie;
+
+  const MoviePage({super.key, required this.movie});
 
   @override
   State<MoviePage> createState() => _MoviePageState();
@@ -20,7 +21,7 @@ class _MoviePageState extends State<MoviePage> {
           Opacity(
             opacity: 0.7,
             child: Image.asset(
-              "lib/images/1.png",
+              widget.movie['image'],
               height: 300,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -38,12 +39,7 @@ class _MoviePageState extends State<MoviePage> {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ApplicationPage()),
-                            );
+                            Navigator.pop(context);
                           },
                           child: const Icon(
                             Icons.arrow_back,
@@ -82,7 +78,7 @@ class _MoviePageState extends State<MoviePage> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(
-                              "lib/images/1.png",
+                              widget.movie['image'],
                               height: 250,
                               width: 180,
                             ),
@@ -121,7 +117,7 @@ class _MoviePageState extends State<MoviePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Doctor Strange 2",
+                          widget.movie['title'],
                           style: TextStyle(
                             color: Colors.grey[900],
                             fontSize: 30,
@@ -130,7 +126,7 @@ class _MoviePageState extends State<MoviePage> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          "Doctor Strange faces off against a multiverse of Champions, but he doesn’t stand alone! Play as your favorite Variants in Marvel Contest of Champions and take on the next big threat",
+                          widget.movie['description'],
                           style: TextStyle(
                             color: Colors.grey[900],
                             fontSize: 16,
@@ -141,7 +137,7 @@ class _MoviePageState extends State<MoviePage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  RecommendWidget(),
+                  const RecommendWidget(),
                 ],
               ),
             ),
