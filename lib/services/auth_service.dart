@@ -69,25 +69,21 @@ class AuthService {
         googleUser.photoUrl ??
         'default_avatar_url_here';
 
-    if (googleUserEmail != null) {
-      try {
-        await Supabase.instance.client.from('users').upsert({
-          'id': supabaseUser.id,
-          'full_name': googleUserName,
-          'email': googleUserEmail,
-          'avatar_url': googleAvatarUrl,
-          'google': googleUserEmail,
-          'created_at': DateTime.now().toIso8601String(),
-        });
-      } catch (e) {
-        print('Error updating user info in Supabase: $e');
-        // Consider how you want to handle this error. You might want to:
-        // - Notify the user
-        // - Try again
-        // - Log it for later analysis
-      }
-    } else {
-      print('Warning: Unable to update user info - email is null');
+    try {
+      await Supabase.instance.client.from('users').upsert({
+        'id': supabaseUser.id,
+        'full_name': googleUserName,
+        'email': googleUserEmail,
+        'avatar_url': googleAvatarUrl,
+        'google': googleUserEmail,
+        'created_at': DateTime.now().toIso8601String(),
+      });
+    } catch (e) {
+      print('Error updating user info in Supabase: $e');
+      // Consider how you want to handle this error. You might want to:
+      // - Notify the user
+      // - Try again
+      // - Log it for later analysis
     }
   }
 }

@@ -35,7 +35,6 @@ class _SignUpPageState extends State<SignUpPage> {
         password: passwordController.text.trim(),
         data: {
           'full_name': usernameController.text.trim(),
-          'avatar_url': '',
         },
       );
 
