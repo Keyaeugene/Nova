@@ -1,16 +1,15 @@
-# nova
+# Nova
 
-A new Flutter project.
+Nova is a movie streaming app built with Flutter and Supabase. It allows users to explore a collection of movies, stream video content, and manage subscription-based access to premium features
 
-## Getting Started
+## Features
+- User Authentication: Sign up and log in using email/password or OAuth providers like Google.
+- Movie Library: Browse a collection of movies with details such as title, description, and trailers.
+- Video Streaming: Stream movies with smooth playback directly within the app.
+- Subscription System: Manage subscription plans (e.g., Basic, Premium) with secure payments.
+- Payment Tracking: Tracks user payments and manages access based on subscription status.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech Stack
+- Flutter: Cross-platform framework for building the mobile interface.
+- Supabase: Backend for user authentication, database, and storage.
+- GraphQL: API layer for efficient data fetching.
