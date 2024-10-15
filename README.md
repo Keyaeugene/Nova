@@ -14,15 +14,16 @@ Nova is a movie streaming app built with Flutter and Supabase. It allows users t
 - Supabase: Backend for user authentication, database, and storage.
 - GraphQL: API layer for efficient data fetching.
 ## Screen Shots
-<img src="https://github.com/user-attachments/assets/a360e14c-6fd0-489a-b10e-c6f61b9af999" width="300">
-<img src="https://github.com/user-attachments/assets/e6444610-cd20-4f1a-a445-63eb5b867753" width="300">
-<img src="https://github.com/user-attachments/assets/c0151426-327c-46b6-a698-cf86aac72956" width="300">
-<img src="https://github.com/user-attachments/assets/f8665d20-d70b-4762-b915-b81c5a60b56f" width="300">
-<img src="https://github.com/user-attachments/assets/89128734-840a-4b07-b31e-16827547e8f1" width="300">
-<img src="https://github.com/user-attachments/assets/a76c8c6b-8675-4f97-bc8e-27626fb0511c" width="300">
-<img src="https://github.com/user-attachments/assets/c0f0891a-93ea-4110-b4ff-b7a5749fbb27" width="300">
-<img src="https://github.com/user-attachments/assets/99744f8f-6b35-463b-a6e2-dbcd946ce6cd" width="300">
-<img src="https://github.com/user-attachments/assets/34e42dbc-0956-4205-a43d-0c734a7ad05e" width="300">
-<img src="https://github.com/user-attachments/assets/f476f38f-1754-45d7-9558-764a6622c3f0" width="300">
-<img src="https://github.com/user-attachments/assets/29b0a6f3-949c-4801-9f4d-bcf1e94f686a" width="300">
+<img src="https://github.com/user-attachments/assets/4ca9291d-3eee-4735-8241-ab4a6c8b1d35" width="300">
+<img src="https://github.com/user-attachments/assets/d3ce99f1-4fa5-4e94-8908-9246f09dd37e" width="300">
+<img src="https://github.com/user-attachments/assets/8efa4487-d133-47f5-ad63-94c75b8e42ca" width="300">
+<img src="https://github.com/user-attachments/assets/3f880f06-0ca8-4bad-b17a-11db47226008" width="300">
+<img src="https://github.com/user-attachments/assets/ada5b4c2-bc45-4604-91bd-2edcc2e57923" width="300">
+<img src="https://github.com/user-attachments/assets/6a5781e2-1364-4b83-93c6-b655b54a729f" width="300">
+<img src="https://github.com/user-attachments/assets/358b0139-eb85-4091-bfc5-95dcd568c056" width="300">
+<img src="https://github.com/user-attachments/assets/e1332bf2-2820-4561-9e43-977b7c7f349e" width="300">
+<img src="https://github.com/user-attachments/assets/9d4e542e-cf38-4e4e-8616-cbd60cb22d08" width="300">
+<img src="https://github.com/user-attachments/assets/ef6cdee6-bd35-4fdb-b654-417803dd42c1" width="300">
+<img src="https://github.com/user-attachments/assets/aec703f4-06ce-4796-811b-535a75ebdf7d" width="300">
+
 
